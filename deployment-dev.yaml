@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mobead
+  namespace: mobead-dev
+spec:
+  selector:
+    matchLabels:
+      app: mobead
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mobead
+    spec:
+      containers:
+      - name: mobead
+        image: image-registry.openshift-image-registry.svc:5000/mobead-dev/mobead:latest
+        ports:
+        - containerPort: 8080
